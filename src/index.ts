@@ -1,6 +1,6 @@
 import Queue from 'promise-queue'
 export default class IQueue {
-    queue: any
+    queue: Queue
     constructor(queue?: Queue) {
         this.queue = queue || new Queue(1)
     }
@@ -22,12 +22,16 @@ export default class IQueue {
                 const diff = average - ms
                 const ath = average * this.threshold
                 if (diff > ath) {
+                    //@ts-ignore
                     this.queue.maxPendingPromises++
                 }
             }
+            //@ts-ignore
             if (average < ms && 1 < this.queue.maxPendingPromises) {
+                //@ts-ignore
                 this.queue.maxPendingPromises--
             }
+            //@ts-ignore
             this.queue._dequeue()
             return ret
         })

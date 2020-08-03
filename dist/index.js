@@ -68,12 +68,16 @@ var IQueue = /** @class */ (function () {
                             diff = average - ms;
                             ath = average * this.threshold;
                             if (diff > ath) {
+                                //@ts-ignore
                                 this.queue.maxPendingPromises++;
                             }
                         }
+                        //@ts-ignore
                         if (average < ms && 1 < this.queue.maxPendingPromises) {
+                            //@ts-ignore
                             this.queue.maxPendingPromises--;
                         }
+                        //@ts-ignore
                         this.queue._dequeue();
                         return [2 /*return*/, ret];
                 }

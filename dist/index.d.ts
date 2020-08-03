@@ -1,6 +1,6 @@
 import Queue from 'promise-queue';
 export default class IQueue {
-    queue: any;
+    queue: Queue;
     constructor(queue?: Queue);
     threshold: number;
     state: {
