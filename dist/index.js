@@ -35,7 +35,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var promise_queue_1 = __importDefault(require("promise-queue"));
 var IQueue = /** @class */ (function () {
     function IQueue(queue) {
         this.threshold = 5 / 100;
@@ -43,7 +47,7 @@ var IQueue = /** @class */ (function () {
             count: 0,
             ms: 0,
         };
-        this.queue = queue;
+        this.queue = queue || new promise_queue_1.default(1);
     }
     IQueue.prototype.add = function (fn) {
         var _this = this;
